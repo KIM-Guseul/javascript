@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+    
+
+    <script>
+
+
+
+    </script>
+</body>
+</html>
+
+<!-- 
+    === DOM ===
+    = html에서 쓰인 tag -> js에서 node로 변환.
+    node (object) :: EventTarget 오브젝트 상속. 
+    node -> EventTarget의 오브젝트. 
+    모든 node는 이벤트가 발생할 수 있음.
+    = document도 node를 상속 ( = document도 node ) :: document에서도 이벤트 발생. 
+    = 이미지.. html 요소들 -> element로 변환 ( = element도 node)...
+
+    = DOM Node
+    = EventTarget
+        - addEventListener
+        - removeEventListener
+        - dispatchEvent
+
+
+    === cssom ===
+    :: css Object Model
+    브라우저가 html 파일을 DOM으로 만들면 -> 스타일 관련 정보를 합해서 = dom요소 + css요소 => cssom 생성.
+
+    = render tree (사용자에게 궁극적으로 보여지는 부분) = dom + cssom
+    = display:none : 렌더트리에 포함 X. 
+    = opacity:0 , visibility:hidden : 렌더트리에 포함 O.
+
+    = cascating : 부모요소에 적용한 스타일 -> 자식요소도 동일한 속성값 가짐.
+
+    
+    === critical rendering path ===
+    브라우저에 url 입력 -> 
+
+    { construction part :: html 페이지에서 브라우저가 이해할 수 있도록 브라우저만의 언어로 변환
+        DOM - CSSOM - RenderTree }
+    html - request/response -> loading -> scripting (html 파일을 dom 요소로 변환)
+
+    - dom 요소가 적을수록 , css 규칙이 적을수록 RenderTree가 작아져 -> 빨라짐.
+    
+
+    { Operation part :: 렌더 트리(dom + css) 기반으로 레이아웃 구상. 실제로 브라우저 윈도우에 렌더링
+        layout - paint - composition }
+    -> rendering -> layout -> painting
+
+    painting - 요소들의 배치에 따라서 각각의 요소들을 이미지로 잘게 쪼개놔. 레이어 단위로. -> 비트맵
+    css의 will-change 속성 : 브라우저가 변경을 예측해서 미리 레이아웃을 준비. 남용 X.
+
+    composition - 미리 준비한 레이어를 브라우저에 표기
+
+    - paint가 자주 일어나지 않을수록 -> 빨라짐
+
+    composition만 다시 > paint 다시 > layout까지 다시 : 이 애니메이션 필수적인지 다시 생각해봐.... 
+
+
+ -->

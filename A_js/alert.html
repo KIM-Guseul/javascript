@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleSheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <button id="button" onclick="funBtn('block')">뿅</button>
+    <div id="alert-box" class="alert-box">
+        Alert Box
+        <button id="close" onclick="funBtn('none')">Close</button>
+    </div> -->
+
+
+
+    <button id="btnId" onclick="funBtn('아이디를 입력하세요')">Id</button>
+    <button id = "btnPw" onclick="funBtn('비번을 입력하세요')">Pw</button>
+
+    <div id="alert-box" class="alert-box">
+        <div id="msg"></div>
+        <button id="close" onclick="funBtn('none')">Close</button>
+    </div>
+
+
+    <script>
+
+        // function funBtn(param){
+        //     document.getElementById('alert-box').style.display = param;
+        // }
+
+        // function funOpen(){
+        //     document.getElementById('alert-box').style.display = 'block';
+        // }
+        // function funClose(){
+        //     document.getElementById('alert-box').style.display = 'none';
+        // }
+
+
+        function funBtn(msg){
+            document.getElementById('msg').innerHTML = msg;
+            document.getElementById('alert-box').style.display = 'block';
+        }
+
+        document.getElementById('close').addEventListener('click', function(){
+            document.getElementById('alert-box').style.display = 'none';
+        });
+
+
+    </script>
+    
+</body>
+</html>

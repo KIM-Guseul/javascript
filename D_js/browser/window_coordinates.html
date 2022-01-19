@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>browser_coordinates</title>
+    <style>
+        div{
+            width: 200px; height: 200px;
+            background-color: lightgrey;
+            margin-bottom: 10px;
+        }
+        .special{
+            background-color: thistle;
+        }
+        aside{
+            position: fixed;
+            top: 20px; right: 20px;
+        }
+
+        .top{
+            position: fixed;
+            bottom: 50px; right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <aside>
+        <button class="scroll-by">Scroll by 100px</button>
+        <button class="scroll-to">Scroll to 100px</button>
+        <button class="scroll-into">Scroll into Special</button>
+    <aside/>
+    
+    <button class="top">To Top</button>
+    
+    <script>
+
+        const scrollBy = document.querySelector('.scroll-by');
+        const scrollTo = document.querySelector('.scroll-to');
+        const scrollInto = document.querySelector('.scroll-into');
+        const toTop = document.querySelector('.top');
+
+        const special = document.querySelector('.special')
+
+        scrollBy.addEventListener('click', () => {
+            window.scrollBy({
+                top: 100,
+                behavior: 'smooth'
+            });
+            console.log(scrollY);
+        });
+
+        scrollTo.addEventListener('click', () => {
+            window.scrollTo({
+                top:100,
+                behavior: 'smooth'
+            });
+            console.log(scrollY);
+        });
+
+        scrollInto.addEventListener('click', () => {
+            const scrollTop = special.offsetTop;
+
+            special.scrollIntoView({
+                behavior: 'smooth'
+            });
+
+            // element.scrollIntoView() :: element로 스크롤 이동
+
+            // window.scrollTo({
+            //     top: scrollTop,
+            //     behavior: 'smooth'
+            // });
+        });
+         
+        toTop.addEventListener('click', () => {
+            window.scrollTo({
+                top:0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    
+</body>
+</html>
+
+<!-- 
+    Element.getBoundingClientRect()
+    :: element 오브젝트 안에 들어있는 api = 함수
+    :: element -> 브라우저 위에 올라가있는 DOM에 들어있는 모든 요소들.
+    so. 모든 요소들은 getBoundintClientRect 함수를 가짐.
+    요소가 브라우저 위에서 (윈도우상에서) 얼마나 멀리 떨어져 있는지, 크기는 얼마인지.. 알 수 있어.
+
+    top , bottom , right , left
+    css - bottom / right :: 브라우저 바닥부터의 , 오른쪽부터의 거리
+    js(getBoundClientBox) - bottom / right :: 브라우저 상단에서 하단까지의, 왼쪽에서 오른쪽까지의 거리
+
+    client X , Y
+    :: 사용자가 보는 페이지와는 상관없이 브라우저에서 브라우저 window x,y가 얼마나 떨어져있는지.
+
+    page X , Y
+    :: client에 들어있는 위치가 아니라 페이지 자체에서 x, y가 얼마나 떨어져있는지.
+-->

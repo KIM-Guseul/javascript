@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 500px;
+        height: 500px;
+        background-color: yellow;
+      }
+
+      .middle {
+        width: 50%;
+        height: 50%;
+        margin: auto;
+        background-color: thistle;
+        transform: translateY(50%);
+      }
+
+      button {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="outer">
+      <div class="middle">
+        <button>Click Me</button>
+      </div>
+    </div>
+
+    <script>
+      const outer = document.querySelector('.outer');
+      const middle = document.querySelector('.middle');
+      const button = document.querySelector('button');
+
+      outer.addEventListener('click', event => {
+        if (event.target !== event.currentTarget) {
+          return;
+        }
+        console.log(`outer: ${event.currentTarget}, ${event.target}`);
+      });
+
+      middle.addEventListener('click', event => {
+        if (event.target !== event.currentTarget) {
+          return;
+        }
+        console.log(`middle ${event.currentTarget}, ${event.target}`);
+      });
+
+      button.addEventListener('click', event => {
+        console.log(`button1 ${event.currentTarget}, ${event.target}`);
+
+      });
+      button.addEventListener('click', event => {
+        console.log(`button2 ${event.currentTarget}, ${event.target}`);
+
+        // e.target :: 클릭된 요소
+        // e.currentTarget :: 클릭이 된 이벤트를 처리하고있는 = 이벤트 리스너가 등록되어있는 요소
+        
+      });
+
+
+    </script>
+
+  </body>
+</html>
+
+<!-- 
+  event.stopPropagation(); :: 상위 요소로 버블링 중단
+  event.stopImmediatePropagation(); :: 상위 요소로 버블링 즉시 중단
+  : 왠만하면 안쓰는게 좋아... 강제로 중단 -> 예상치 못한 오류 가능성 높아.. 
+
+  강제로 중단 <<<<<< 원하는 조건에서만 실행.
+ -->
+
+<!-- 
+  부모 요소를 가진 요소에서 이벤트가 발생 ->
+
+== capturing (부모 컨테이너 -> 선택된 요소)
+: html요소에서 내부 하위 요소로 내려오면서 등록된 onclick 이벤트 핸들러가 있는지 확인. 
+: 실제로 선택된 요소에 닿을 때까지.
+:보통 capturing 단계에서 뭔가를 해야하는 일은 거의 없어
+
+== bubbling ( 선택된 요소 -> 부모 컨테이너)
+: capturing 의 정반대.
+: 선택된 요소가 onclick 이벤트 핸들러를 가지고 있는지 확인
+: 조상으로, 조상으로 .. html 요소에 닿을 때까지.
+
+ -->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 250px;
+        height: 250px;
+        background-color: yellow;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="checkbox" />
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+
+      document.addEventListener('wheel', 
+      event => {
+        console.log('scrolling');
+        event.preventDefault();
+      },
+      //{ passive : false } passive가 true로 설정된 요소는 인위적으로 false 지정 안하는게 좋아
+      );
+
+      //wheel ... 뭔가를 빠르게 수행해야하는 이벤트 - 브라우저 동작 일단 실행
+      // passive(boolean) = true : e.preventDefault() 무조건 무시. 에러발생
+
+      const checkbox = document.querySelector('input');
+      checkbox.addEventListener('click', event => {
+        // long
+        console.log('checked');
+        event.preventDefault();
+      });
+
+      //checkbox - 등록된 이벤트 리스너 처리 후 브라우저 동작 실행
+
+    </script>
+  </body>
+</html>
+<!-- 
+  e.preventDefaul(); :: 기본적으로 발생하는 동작 취소
+ -->

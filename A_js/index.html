@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="styleSheet" href="main.css">
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    
+</head>
+
+
+<body>
+
+    <!-- <h4 id="test">hihi</h4>
+
+    <p class="greeting"> 안녕하세요 </p>
+    <p class="greeting"> 안녕하세요 </p>
+    <p class="greeting"> 안녕하세요 </p>
+    
+    <button class="btn">빨강</button>
+    <button class="btn">하양</button>
+    <button class="btn">검정</button>
+
+    <input id="input"> -->
+
+    <form id="form" action="login.php">
+    <!-- <form> -->
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Email" id="email">
+          <p id="emailAlert">이메일을 입력하세요</p>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" id="pw">
+          <p id="pwAlert">비밀번호를 입력하세요</p>
+        </div>
+        <button type="submit" class="btn btn-primary">전송</button>
+      </form>
+
+
+
+
+
+
+    <script>
+        let regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
+
+        $('#email').on('input', function(e){
+            let email = $('#email').val();
+            let checkEmail = regEmail.test(email);
+
+            if(email === ''){
+                e.preventDefault();
+                $('#emailAlert').text('이메일을 입력하세요')
+            }else if(checkEmail === false){
+                e.preventDefault();
+                $('#emailAlert').text('이메일 양식을 확인하세요')
+            }else{
+                $('#emailAlert').text('입력완료')
+            }
+        })
+
+
+        $('#pw').on('input', function(e){
+            let pw = $('#pw').val();
+            // let chk = /^[a-zA-Z0-9]{8,20}$/
+            let chkNum = pw.search(/[0-9]/g);
+            let chkEng = pw.search(/[a-z]/ig);
+            let chkSpe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+            
+            if( chkNum < 0 || chkEng < 0 || chkSpe < 0){
+                e.preventDefault();
+                $('#pwAlert').text('비밀번호는 숫자와 알파벳, 특수문자를 혼용하여야 합니다.')
+
+            } else if(pw.length < 8 || pw.length > 20){
+                e.preventDefault();
+                $('#pwAlert').text('비밀번호는 숫자와 알파벳, 특수문자 조합으로 8~20자리를 사용해야 합니다.')
+            } else {
+                $('#pwAlert').text('입력완료')
+            }
+        })
+
+
+
+
+
+        // let email;
+        // let regex;
+        // let regexEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+        // $('#email').on('change', function(){
+        //     email = $('#email').val(); 
+        //     regex = regexEmail.test(email);
+        //     console.log(email)
+        //     if( email===''){
+        //         $('#emailAlert').text('이메일을 입력하세요')
+        //     } 
+        //     else if(!regex){
+        //         $('#emailAlert').text('이메일 양식을 확인하세요')
+        //         console.log(email)
+        //     } else{
+        //         $('#emailAlert').text('이메일 입력 완료')
+        //         alert("입력됨")
+        //     }
+        // })
+        // console.log(regex)
+
+
+
+
+
+
+        // $('#email').on('input', function(){
+        //     $('#emailAlert').text($('#email').val());   
+        // })
+
+        // $('#pw').on('input', function(){
+        //     $('#pwAlert').text($('#pw').val());
+        // });
+
+
+
+
+        $('#form').on('submit', function(e){
+
+            const email = $('#email').val();
+
+            const regexEmail = /\S+@\S+\.\S+/.test(email)
+
+
+
+            if(regexEmail == false){
+                e.preventDefault();
+                alert('이메일을 확인하세요')
+            }else{
+                alert('ok')
+            }
+
+
+
+
+            // if( $('#email').val() == ''){
+            //     e.preventDefault();
+            //     // alert('email error');
+            //     $('#idAlert').show();
+            // }else if( $('#pw').val() == ''){
+            //     e.preventDefault();
+            //     // alert('pw error');
+            //     $('#pwAlert').show();
+            // }
+            // else{
+            //     alert('valide')
+            // }
+
+
+        });
+
+        // ===================================================
+
+                var credit = 60000;
+        var futureCredit = 0;
+
+        if(credit < 50000){
+            futureCredit = credit * 1.15 * 1.15
+        }else{
+            futureCredit = credit * 1.2 * 1.2
+        }
+        // console.log(futureCredit);
+
+        // ===================================================
+
+        var first = 360;
+        var total = 0;
+
+        var refill = first * 2/3;
+
+        total = first + refill;
+
+        refill = refill * 2/3;
+        total = total + refill;
+
+        // console.log(total);
+
+        // ===================================================
+
+
+
+        
+
+
+
+
+
+
+        // document.getElementById('test').innerHTML = '안녕';
+
+        // $('#test').html('안녕');
+        // // $('#test').text('안녕');
+        // $('#test').css('color', 'blue');
+        // $('#test').attr('src','dddd');
+        // $('#test').addClass('yellow-bg');
+        // $('.greeting').eq(1).html('안녕');
+
+        // $('.btn').eq(0).on('click', function(){
+
+        //     if( $('#input').val() == '안녕' ){
+
+        //         $('#test').css('color', 'red');
+        //     }else{
+        //         $('#test').css('color', 'white');
+        //     }
+        // });
+
+        // $('.btn').eq(1).on('click', function(){
+        //     $('#test').show();
+        // });
+
+        // $('.btn').eq(2).on('click', function(){
+        //     // $('#test').css('display', 'none');
+        //     $('#test').fadeToggle();
+        // })
+
+        // if( 1 === '1') {
+        //     console.log('hi')
+        // } else{
+        //     console.log('bye')
+        // }
+
+        // ===  : 엄격학 비교. 자료의 타입까지 비교. 1 === '1' - 넘버와 스트링 구분
+
+        // a && b : 둘 다 참일 때 , a || b : 둘 중 하나만 참이더라도
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

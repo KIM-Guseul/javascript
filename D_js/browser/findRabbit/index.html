@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <style>
+
+      body{
+        display: flex;
+        flex-direction: column;
+      }
+      .findBtn{
+        padding: 10px;
+        background-color: orange;
+        color: white;
+        cursor: pointer;
+      }
+      img{
+        width: 150px; height: 150px;
+      }
+      button{
+        position: fixed;
+        top: 30px; right: 30px;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <button> Top </button>
+
+    <div class="findBtn">Find a Rabbit</div>
+
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img class="rabbit" src="./img/rabbit.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+    <img src="./img/carrot.png" alt="carrot"/>
+
+    <script>
+      const findBtn = document.querySelector('.findBtn');
+      const topBtn = document.querySelector('button');
+      const rabbit = document.querySelector('.rabbit');
+
+      findBtn.addEventListener('click' , () => {
+        rabbit.scrollIntoView({
+          behavior : 'smooth',
+          block : 'center',
+        })
+      });
+      
+      topBtn.addEventListener('click' , () => {
+        window.scrollTo({
+          top : 0,
+          behavior : 'smooth',
+        });
+      });
+
+    </script>
+  </body>
+</html>

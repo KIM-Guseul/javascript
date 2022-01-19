@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window_load</title>
+
+    <script src="test.js" defer></script>
+    <!-- defer :: html이 전부 파싱된 후 DOMContentLoaded 가 출력되기 이전에 호출  -->
+
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <script>
+
+        // only document :: document만 = html만 로드되면 바로 호출.
+        // js 파일이 리소스에 대해서 동작을 수행하지 않으면 여기서 동작 수행하는게 더 빨라.
+        // defer 쓰면 DOMContentLoaded 이전에 or 비슷한 시점에 호출 -> 효율적
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded')
+        });
+
+        // after resources (css, image...) :: 모든 리소스가 다운 완료되면 호출        
+        // 페이지에 리소스가 많은 경우 - 얘가 load보다 빨리 호출돼고 load는 리소스가 다 다운되면 호출.
+        window.addEventListener('load', () => {
+            console.log('load');
+        });
+
+        // before unload :: 사용자가 페이지에 나가기 전에 호출
+        window.addEventListener('beforeunload', () => {
+            console.log('beforeunload');
+        });
+
+        // resource is being unloaded :: 페이지가 unloaded 됐을 때 호출
+        window.addEventListener('unload', () => {
+            console.log('unload');
+        });
+
+    </script>
+    
+</body>
+</html>
